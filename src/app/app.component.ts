@@ -1,18 +1,27 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms'
-import { CommonModule, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Product } from './model/Products';
+import { HighlightDirective } from './utils/highlight.directive';
+import { UserComponent } from './components/user/user.component';
+import { AdminComponent } from './components/admin/admin.component';
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, NgIf, NgFor, NgSwitch,NgSwitchCase,NgSwitchDefault],
+  imports: [UserComponent ,AdminComponent,RouterOutlet, FormsModule,CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass,HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
 })
 export class AppComponent {
-  userType:string="";
+
+  userSelectedColor = "red";
+  isActive: boolean = false;
+  textColor = "orange";
+  fontSize = 10;
+  userType: string = "";
+  isAdmin=false;
 
   fruits: string[] | null = ['Apple', 'Orange', 'Kiwi'];// null;
 
@@ -21,11 +30,12 @@ export class AppComponent {
     this.products.push({
       id: 1,
       name: 'Laptop',
-      price: 100
+      price: 100,
+      inStock:true
     });
-    this.products.push({ id: 22, name: 'Laptop 2', price: 200 });
-    this.products.push({ id: 3, name: 'Laptop 3', price: 300 });
-    this.products.push({ id: 44, name: 'Laptop 4', price: 400 });
+    this.products.push({ id: 22, name: 'Laptop 2', price: 200,inStock:true });
+    this.products.push({ id: 3, name: 'Laptop 3', price: 300,inStock:false });
+    this.products.push({ id: 44, name: 'Laptop 4', price: 400,inStock:true });
   }
 
 

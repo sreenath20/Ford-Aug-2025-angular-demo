@@ -1,0 +1,11 @@
+.highlight{
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+}
+.instock{
+    color: #43e70c;
+    font-weight: bold;
+    padding: 5px;
+}

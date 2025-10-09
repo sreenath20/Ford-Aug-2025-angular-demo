@@ -1,3 +1,7 @@
+<app-admin *ngIf="isAdmin"></app-admin>
+
+<app-user *ngIf="!isAdmin"></app-user>
+
 <!-- // View of the componet -->
 <H1> Welcome to my app !</H1>
 <h3> Data binding</h3>
@@ -87,8 +91,9 @@ Gender:{{gender}}
         </thead>
         <tbody>
             <tr *ngFor="let product of products; index as i">
+
                 <td>{{i+1}}</td>
-                <td>{{product.name}}</td>
+                <td [ngClass]="{'instock':product.inStock}">{{product.name}}"</td>
                 <td>{{product.price}}</td>
 
             </tr>
@@ -102,3 +107,28 @@ Gender:{{gender}}
     <p *ngSwitchCase="'user'">User block</p>
     <p *ngSwitchDefault>Guest block</p>
 </div>
+<h3> Demo of Switch and select</h3>
+<label for="color">Select color</label>
+<select id="color" [(ngModel)]="userSelectedColor">
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+</select>
+{{userSelectedColor}}
+<div [ngSwitch]="userSelectedColor">
+    <p *ngSwitchCase="'red'" style="color:red">You selected red</p>
+    <p *ngSwitchCase="'green'" style="color:green">You selected green</p>
+    <p *ngSwitchCase="'blue'" style="color:blue">You selected blue</p>
+    <p *ngSwitchDefault>Unknown color</p>
+
+</div>
+<hr>
+<h3> Attribute directives: ngClass , ngStyle </h3>
+<p [ngClass]="{'highlight':isActive}">Highlighted Para: Active User</p>
+<!-- <button (click)="isActive = !isActive">Toggle</button> -->
+<p [ngStyle]="{'color':textColor, 'font-size':fontSize+'px'}">
+    Dynamic Styling using ngStyle !
+</p>
+<hr>
+<h3> Custom directive</h3>
+<p appHighlight> Am a special para !</p>
