@@ -20,7 +20,12 @@ Event Binding:
 <form>
     User Name:
     <input [(ngModel)]="name" name="userName">
-    <input type="checkbox" [(ngModel)]="isSubscribed" name="checkBox">
+    <br>
+    <label>
+        <input type="checkbox" [(ngModel)]="isSubscribed" name="checkBox">
+        User Subscription.
+    </label>
+    <br>
 
     Gender:
     <label>
@@ -31,9 +36,69 @@ Event Binding:
         <input type="radio" name="gender" value="Female" [(ngModel)]="gender">
         Female
     </label>
-    
+
 </form>
 Note:
 name: {{name}}<br>
 isSubscribes:{{isSubscribed}}<br>
 Gender:{{gender}}
+<hr>
+<h3> Built in Structural directives</h3>
+*ngIf
+<br>
+<label>
+    <input type="checkbox" [(ngModel)]="isSubscribed" name="checkBox">
+    User Subscription.
+</label>
+<br>
+<div *ngIf="isSubscribed; else  elseSubscriptionBlock">
+    <p> Thank you for subscription !</p>
+</div>
+<ng-template #elseSubscriptionBlock>
+    <p *ngIf="!isSubscribed"> Please subscribe !</p>
+
+    <p> Contact 'subscribe.gmail.com' for subscription.. </p>
+</ng-template>
+
+<div *ngIf="fruits != null && fruits.length !=0; else noFruitsBlock">
+    Available fruits are:
+    <ul>
+        <li *ngFor="let fruit of fruits; index as i;first as isFirst; last as isLast">
+            <label *ngIf="isFirst">--List Start--</label>
+            {{i+1}}:{{fruit}}
+            <label *ngIf="isLast">--List Ends--</label>
+        </li>
+    </ul>
+</div>
+<ng-template #noFruitsBlock>
+    <p> All fruits are out of stock! </p>
+</ng-template>
+
+<h3> List of products</h3>
+<p *ngIf="products.length == 0">No products to display...</p>
+<div *ngIf="products.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>sl no</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products; index as i">
+                <td>{{i+1}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h3> ngSwitch</h3>
+<div [ngSwitch]="userType">
+    <p *ngSwitchCase="'admin'">Admin block</p>
+    <p *ngSwitchCase="'user'">User block</p>
+    <p *ngSwitchDefault>Guest block</p>
+</div>
