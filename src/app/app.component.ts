@@ -6,15 +6,23 @@ import { Product } from './model/Products';
 import { HighlightDirective } from './utils/highlight.directive';
 import { UserComponent } from './components/user/user.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { StarPipe } from './pipes/star.pipe';
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [UserComponent ,AdminComponent,RouterOutlet, FormsModule,CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass,HighlightDirective],
+  imports: [StarPipe,UserComponent ,AdminComponent,RouterOutlet, FormsModule,CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass,HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
 })
 export class AppComponent {
+  today: number = Date.now();
+   object: Object = {foo: 'bar', baz: 'qux', nested: {xyz: 3, numbers: [1, 2, 3, 4, 5]}};
+  pi: number = 3.14159265359;
+  value=345.567;
+  a: number = 0.259;
+  b: number = 1.3495;
+  companyName:string="ford india";
 
   userSelectedColor = "red";
   isActive: boolean = false;

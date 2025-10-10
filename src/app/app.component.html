@@ -132,3 +132,97 @@ Gender:{{gender}}
 <hr>
 <h3> Custom directive</h3>
 <p appHighlight> Am a special para !</p>
+<h3> Built in Pipes</h3>
+{{companyName}}<br>
+{{companyName | titlecase}}<br>
+{{companyName | uppercase}}<br>
+{{companyName | lowercase}}<br>
+<h3>Decimal pipe</h3>
+<div>
+       <p>
+      No number pipe specified:
+      {{ pi }}
+      <!--output: '3.142'-->
+    </p>
+    <p>
+      No specified formatting:
+      {{ pi | number }}
+      <!--output: '3.142'-->
+    </p>
+
+    <p>
+      With digitsInfo parameter specified:
+      {{ pi | number: '4.1-5' }}
+      <!--output: '0,003.14159'-->
+    </p>
+
+    <p>
+      With digitsInfo and locale parameters specified:
+      <!-- {{ pi | number: '4.1-5' : 'fr' }} -->
+      <!--output: '0 003,14159'-->
+    </p>
+        <p>
+      With digitsInfo :
+      {{ value | number: '2.2-2' }}
+      <!--output: '0 003,14159'-->
+    </p>
+  </div>
+  <div>
+    a:{{a}}<br>
+    b:{{b}}
+    <!--output '$0.26'-->
+    <p>A: {{ a | currency }}</p>
+
+    <!--output 'CA$0.26'-->
+    <p>A: {{ a | currency: 'CAD' }}</p>
+    <!--output 'CA$0.26'-->
+    <p>A: {{ a | currency: 'INR' }}</p>
+    <!--output 'CAD0.26'-->
+    <p>A: {{ a | currency: 'CAD' : 'code' }}</p>
+
+    <!--output 'CA$0,001.35'-->
+    <p>B: {{ b | currency: 'CAD' : 'symbol' : '4.2-2' }}</p>
+
+    <!--output '$0,001.35'-->
+    <p>B: {{ b | currency: 'CAD' : 'symbol-narrow' : '4.2-2' }}</p>
+
+    <!--output '0 001,35 CA$'-->
+    <!-- <p>B: {{ b | currency: 'CAD' : 'symbol' : '4.2-2' : 'fr' }}</p> -->
+
+        <!--output 'CA$0,001.35'-->
+    <p>B: {{ b | currency: 'INR' : 'symbol' : '4.2-2' }}</p>
+
+    <!--output '$0,001.35'-->
+    <p>B: {{ b | currency: 'INR' : 'symbol-narrow' : '2.2-2' }}</p>
+
+    <!--output '0 001,35 CA$'-->
+    <!-- <p>B: {{ b | currency: 'INR' : 'symbol' : '4.2-2' : 'fr' }}</p> -->
+
+    <!--output 'CLP1' because CLP has no cents-->
+    <p>B: {{ b | currency: 'CLP' }}</p>
+  </div>
+  <div>
+    <h3> PercentPipe </h3>
+    <!--output '26%'-->
+    <p>A: {{ a | percent }}</p>
+
+    <!--output '0,134.950%'-->
+    <p>B: {{ b | percent: '4.3-5' }}</p>
+
+    <!--output '0 134,950 %'-->
+    <!-- <p>B: {{ b | percent: '4.3-5' : 'fr' }}</p> -->
+  </div>
+  <div>
+    <p>Without JSON pipe:</p>
+    <pre>{{ object }}</pre>
+    <p>With JSON pipe:</p>
+    <pre>{{ object | json }}</pre>
+  </div>
+  <div>
+   <p>Today is {{today | date}}</p>
+    <p>Or if you prefer full format , {{today | date:'full'}}</p>
+   <p>Or if you prefer, {{today | date:'fullDate'}}</p>
+   <p>The time is {{today | date:'h:mm a z'}}</p>
+ </div>
+ <h3> Custom pipes</h3>
+ <p>{{companyName | titlecase | star}}</p>
