@@ -226,3 +226,37 @@ Gender:{{gender}}
  </div>
  <h3> Custom pipes</h3>
  <p>{{companyName | titlecase | star}}</p>
+ <p>Square of 5: {{5 | square}}</p>
+  <p>Square of 25: {{25 | square}}</p>
+  <div>
+    <h3> Custom search pipe:</h3>
+    <input type="text" placeholder="search text" name="searchText" [(ngModel)]="userQuery">
+    <button (click)="searcProduct()">Search</button>
+    <button (click)="addProduct()">Add Product</button>
+    <ol>
+        <li *ngFor="let product of products | search :searchText:'name'">
+            {{product | json}}
+
+        </li>
+    </ol>
+  </div>
+  <div *ngIf="products.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>sl no</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products | search:searchText:'name'; index as i">
+
+                <td>{{i+1}}</td>
+                <td [ngClass]="{'instock':product.inStock}">{{product.name}}"</td>
+                <td>{{product.price}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
