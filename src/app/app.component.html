@@ -250,7 +250,7 @@ Gender:{{gender}}
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products | search:searchText:'name'; index as i">
+            <tr *ngFor="let product of products | search:searchText:'name' ; index as i">
 
                 <td>{{i+1}}</td>
                 <td [ngClass]="{'instock':product.inStock}">{{product.name}}"</td>
@@ -260,3 +260,39 @@ Gender:{{gender}}
         </tbody>
     </table>
 </div>
+<h3> Custom sort pipe</h3>
+<div *ngIf="products.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products | sort:'name':'desc'; index as i">
+
+                <td>{{product.id}}</td>
+                <td [ngClass]="{'instock':product.inStock}">{{product.name}}"</td>
+                <td>{{product.price}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- student-list.component.html -->
+<h3>Sorted by Marks (Ascending)</h3>
+<ul>
+  <li *ngFor="let student of students | sort:'name':'asc'">
+    {{student.name}} - {{student.marks}}
+  </li>
+</ul>
+
+<h3>Sorted by Name (Descending)</h3>
+<ul>
+  <li *ngFor="let student of students | sort:'name':'desc'">
+    {{student.name}} - {{student.marks}}
+  </li>
+</ul>

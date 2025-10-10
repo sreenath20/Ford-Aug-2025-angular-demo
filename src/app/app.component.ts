@@ -9,15 +9,23 @@ import { AdminComponent } from './components/admin/admin.component';
 import { StarPipe } from './pipes/star.pipe';
 import { SquarePipe } from './pipes/sqare.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
+  imports: [SortPipe, SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
 })
 export class AppComponent {
+  // student-list.component.ts
+  students = [
+    { name: 'Ravi', marks: 85 },
+    { name: 'Anita', marks: 92 },
+    { name: 'Kiran', marks: 78 },
+    { name: 'Suman', marks: 88 }
+  ];
   today: number = Date.now();
   object: Object = { foo: 'bar', baz: 'qux', nested: { xyz: 3, numbers: [1, 2, 3, 4, 5] } };
   pi: number = 3.14159265359;
@@ -40,12 +48,12 @@ export class AppComponent {
     this.products.push({
       id: 1,
       name: 'Hp Laptop',
-      price: 100,
+      price: 900,
       inStock: true
     });
-    this.products.push({ id: 22, name: 'Dell Laptop 2', price: 200, inStock: true });
-    this.products.push({ id: 3, name: 'mouse 3', price: 300, inStock: false });
-    this.products.push({ id: 44, name: 'key board 4', price: 400, inStock: true });
+    this.products.push({ id: 22, name: 'Dell Laptop 2', price: 500, inStock: true });
+    this.products.push({ id: 3, name: 'Mouse 3', price: 300, inStock: false });
+    this.products.push({ id: 44, name: 'Key board 4', price: 100, inStock: true });
   }
   searchText: string = '';
   userQuery: string = '';
@@ -59,8 +67,10 @@ export class AppComponent {
       price: 700,
       inStock: true
     };
+    // push will not be detected by Angular pure pipe
     // this.products.push(newProduct);
-    this.products = [...this.products,newProduct];//#2000
+    // create new array containg existing products + newproduct[ ... is a spread operator in JS]
+    this.products = [...this.products, newProduct];//#2000
     console.log(this.products);
 
 
