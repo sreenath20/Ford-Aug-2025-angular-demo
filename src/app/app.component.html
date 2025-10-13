@@ -1,3 +1,5 @@
+<app-registration/>
+
 <app-admin *ngIf="isAdmin"></app-admin>
 
 <app-user *ngIf="!isAdmin"></app-user>
@@ -271,7 +273,7 @@ Gender:{{gender}}
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products | sort:'name':'desc'; index as i">
+            <tr *ngFor="let product of products |search:searchText:'name' | sort:'name':'asc'; index as i">
 
                 <td>{{product.id}}</td>
                 <td [ngClass]="{'instock':product.inStock}">{{product.name}}"</td>

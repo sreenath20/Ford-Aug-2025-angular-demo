@@ -1,0 +1,39 @@
+<div>
+    <h3> New User Registration:</h3>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+        <label for="name"> User Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="user.name" required minlength="3" #name="ngModel">
+        <div class="text-danger" *ngIf="name.invalid && name.touched">
+            <small *ngIf="name.errors?.['required']">Name is Required</small>
+            <small *ngIf="name.errors?.['minlength']">Minimum 3 characters Required.</small>
+        </div>
+
+        <label for="name"> User Email:</label>
+        <input type="text" id="email" name="email" [(ngModel)]="user.email" required #email="ngModel"
+            pattern="^[a-zA-Z0-9._%+-]+&#64;[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$">
+        <div class="text-danger" *ngIf="email.invalid && email.touched">
+            <small *ngIf="email.errors?.['required']">Email is Required</small>
+            <small *ngIf="email.errors?.['pattern']">Enter valid email. eg: info&#64;gmail.com</small>
+        </div>
+
+        <label for="name"> User Password:</label>
+        <input type="text" id="pwd" name="pwd" [(ngModel)]="user.password" required #pwd="ngModel"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!#$%^&*])[a-zA-Z0-9!#$%^&*]{8,}$">
+        <div class="text-danger" *ngIf="pwd.invalid && pwd.touched">
+            <small *ngIf="pwd.errors?.['required']">Passwrod is Required</small>
+            <small *ngIf="pwd.errors?.['pattern']">Password must be at least 8 characters long and include at least one
+                uppercase letter, one lowercase letter, one digit, and one special character.</small>
+        </div>
+        <label for="name"> Confirm Password:</label>
+        <input type="password" id="cpwd" name="cpwd" [(ngModel)]="confirmPwd" required #cpwd="ngModel">
+        <div class="text-danger" *ngIf="cpwd.touched && (pwd.value != cpwd.value) ">
+            <small >password & Confirm Passwrod do not match!</small>       
+        </div>
+
+
+        {{user.name}}
+        <!-- submit -->
+        <button type="submit" [disabled]="( userForm.invalid)">Submit</button>
+    </form>
+</div>

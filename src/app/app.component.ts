@@ -10,10 +10,11 @@ import { StarPipe } from './pipes/star.pipe';
 import { SquarePipe } from './pipes/sqare.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { RegistrationComponent } from './components/registration/registration.component';
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [SortPipe, SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
+  imports: [RegistrationComponent,SortPipe, SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
