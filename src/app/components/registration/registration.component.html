@@ -34,6 +34,6 @@
 
         {{user.name}}
         <!-- submit -->
-        <button type="submit" [disabled]="( userForm.invalid)">Submit</button>
+        <button type="submit" [disabled]="( userForm.invalid || (pwd.value != cpwd.value))">Submit</button>
     </form>
 </div>

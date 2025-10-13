@@ -1,0 +1,33 @@
+<div>
+    <h3> Reactive User Form:</h3>
+    <form [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()">
+        <label for="name">User Name:</label>
+        <input type="text" id="uname" name="uname" formControlName="name">
+        <div class="text-danger" *ngIf="f['name'].touched && f['name'].invalid">
+            <small *ngIf="f['name'].errors?.['required']">Name Required.</small>
+            <small *ngIf="f['name'].errors?.['minlength']">Minimum 3 chars Required.</small>
+        </div>
+        <label for="name">User Email:</label>
+        <input type="text" id="uemail" name="uemail" formControlName="email">
+        <div class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
+            <small *ngIf="f['email'].errors?.['required']">Email Required.</small>
+            <small *ngIf="f['email'].errors?.['pattern']">Enter valid email. e.g: info-Gmail.com.</small>
+        </div>
+        <label for="name">User Password:</label>
+        <input type="text" id="upwd" name="upwd" formControlName="password">
+        <div class="text-danger" *ngIf="f['password'].touched && f['password'].invalid">
+            <small *ngIf="f['password'].errors?.['required']">Password Required.</small>
+            <small *ngIf="f['password'].errors?.['minlength']">Password must be at least 8 characters long.</small>
+            <small *ngIf="f['password'].errors?.['pattern']">Password must include at least one
+                uppercase letter, one lowercase letter, one digit, and one special character.</small>
+        </div>
+        <label for="name">Confirm Password:</label>
+        <input type="text" id="ucpwd" name="ucpwd" formControlName="confirmPassword">
+        <div class="text-danger" *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid || registrationFormGroup.errors?.['passwordMismatch']">
+            <small *ngIf="f['confirmPassword'].errors?.['required']">Confirm Password Required.</small>
+            <small *ngIf="registrationFormGroup.errors?.['passwordMismatch']">Passwords do not match.</small>
+        </div>
+
+        <button type="submit" [disabled]="registrationFormGroup.invalid">Submit</button>
+    </form>
+</div>

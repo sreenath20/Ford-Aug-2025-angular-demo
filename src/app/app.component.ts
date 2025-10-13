@@ -11,10 +11,11 @@ import { SquarePipe } from './pipes/sqare.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormRegistrationComponent } from './components/reactive-form-registration/reactive-form-registration.component';
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [RegistrationComponent,SortPipe, SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
+  imports: [ReactiveFormRegistrationComponent,RegistrationComponent,SortPipe, SearchPipe, SquarePipe, StarPipe, UserComponent, AdminComponent, RouterOutlet, FormsModule, CommonModule, NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgClass, HighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true
