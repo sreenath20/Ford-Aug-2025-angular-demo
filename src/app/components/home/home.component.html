@@ -1,0 +1,12 @@
+<p>home works!</p>
+<button (click)="gotoUser(505)">Go To User</button>
+
+<a [routerLink]="['/user',101]">User 101</a>
+
+<!-- student-list.component.html -->
+<h3>Sorted by Marks (Ascending)</h3>
+<ul>
+  <li *ngFor="let user of users ">
+    {{user.name}} - {{user.marks}}-<button (click)="gotoUser(user.id)">Go To User</button>
+  </li>
+</ul>
