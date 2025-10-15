@@ -7,6 +7,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ErrorComponent } from './components/error/error.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { ParentComponent } from './components/parent/parent.component';
+import { ListBookComponent } from './components/list-book/list-book.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -14,7 +15,8 @@ export const routes: Routes = [
     {path:'users',component:UserComponent}, // display all users
     {path:'user/:id',component:UserComponent}, // display user by id
     {path:'registration',component:RegistrationComponent},  
-    {path:'parent',component:ParentComponent},      
+    {path:'parent',component:ParentComponent},   
+    {path:'list-books',component:ListBookComponent},    
     {path:'demo',component:DemoComponent},    
     
     {path:'**',redirectTo:''} // '/' root of url 

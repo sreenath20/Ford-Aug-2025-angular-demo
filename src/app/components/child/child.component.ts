@@ -10,11 +10,14 @@ import { FormsModule } from '@angular/forms';
 export class ChildComponent {
 
   @Input() city!:string;
-
   @Output() messageEvent= new EventEmitter<string>()
 
    childMessage=''; 
   sendMessage(){
     this.messageEvent.emit(this.childMessage);
   }
+  // onCityChange(event:any){
+  //   console.log('oncityChange',event.target.value);
+  //   this.messageEvent.emit(event.target.value);
+  // }
 }

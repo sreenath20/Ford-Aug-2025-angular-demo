@@ -2,4 +2,7 @@
 Child message: {{childMessage}}
 
 <!-- rendering child inside parent -->
-<app-child [city]="cityName" (messageEvent)="receiveMessage($event)"/>
+<app-child [city]="cityName"
+ (messageEvent)="receiveMessage($event)"/>
+ <!-- <app-child [(city)]="cityName"
+ /> -->
