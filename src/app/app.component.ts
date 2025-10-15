@@ -15,7 +15,7 @@ import { ReactiveFormRegistrationComponent } from './components/reactive-form-re
 // <app-root></app-root>
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterLink,RouterLinkActive],
+  imports: [UserComponent,RouterOutlet,RouterLink,RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true

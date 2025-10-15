@@ -1,3 +1,11 @@
+<h6> Company Name: {{companyName}}</h6>
+<div>
+<h3>Change company Name:</h3>
+<input [(ngModel)]="companyName" id="cn" name="cn">
+<!-- Never expose service methods in UI -->
+<button (click)="changeCompanyName()">Change Name</button>
+</div>
+
 <p>home works!</p>
 <button (click)="gotoUser(505)">Go To User</button>
 

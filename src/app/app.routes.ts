@@ -15,8 +15,8 @@ export const routes: Routes = [
     {path:'registration',component:RegistrationComponent},    
     {path:'demo',component:DemoComponent},    
     
-    // {path:'**',redirectTo:''}
-    {path:'**',component:ErrorComponent}
+    {path:'**',redirectTo:''} // '/' root of url 
+    // {path:'**',component:ErrorComponent} // or display notFound component 
 ];
 
 // /home -> HomeComponent

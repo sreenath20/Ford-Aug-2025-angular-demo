@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
+  companyName='';
   users = [
     { id: 1, name: 'Ravi', marks: 85 },
     { id: 2, name: 'Anita', marks: 92 },
@@ -18,12 +21,20 @@ export class HomeComponent {
   ];
   // when constructor argument has visibility modified they will 
   // become data members of class
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService:UserService) {
     this.router = router;
+
+  }
+  ngOnInit(): void {
+   this.companyName = this.userService.getCompanyName();
   }
 
   gotoUser(id: number) {
     this.router.navigate(['/user', id]);
+  }
+
+  changeCompanyName(){
+    this.userService.setComanyName(this.companyName);
   }
 
 }
