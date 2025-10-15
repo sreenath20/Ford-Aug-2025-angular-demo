@@ -6,13 +6,15 @@ import { AboutComponent } from './components/about/about.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ErrorComponent } from './components/error/error.component';
 import { DemoComponent } from './components/demo/demo.component';
+import { ParentComponent } from './components/parent/parent.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
     {path:'about',component:AboutComponent},
     {path:'users',component:UserComponent}, // display all users
     {path:'user/:id',component:UserComponent}, // display user by id
-    {path:'registration',component:RegistrationComponent},    
+    {path:'registration',component:RegistrationComponent},  
+    {path:'parent',component:ParentComponent},      
     {path:'demo',component:DemoComponent},    
     
     {path:'**',redirectTo:''} // '/' root of url 

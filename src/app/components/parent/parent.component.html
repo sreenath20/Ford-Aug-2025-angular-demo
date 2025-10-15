@@ -1,0 +1,5 @@
+<p>parent works!</p>
+Child message: {{childMessage}}
+
+<!-- rendering child inside parent -->
+<app-child [city]="cityName" (messageEvent)="receiveMessage($event)"/>
