@@ -20,9 +20,14 @@ export interface Author {
 })
 export class BookService {
 
+// hard coded author email id
+authorEmail: string='author01@gmail.com';
+
   baseBooksUrl = 'http://localhost:8080/books';
   baseAuthorsUrl = 'http://localhost:8080/authors';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // if needed get author meil from login service / local storage
+   }
 
 
   getAllBooks(): Observable<Book[]> {
@@ -31,6 +36,14 @@ export class BookService {
   createBookByAuthorEmail(authorEmail: string, newBook: Book): Observable<Author> {
     return this.http.post<Author>(`${this.baseAuthorsUrl}/${authorEmail}/books`, newBook);
   }
-
+  getBookById(id: string): Observable<Book> {
+    return this.http.get<Book>(`${this.baseBooksUrl}/${id}`);
+  }
+  editBookByAuthorEmail(authorEmail: string, newBook: Book): Observable<Author> {
+    return this.http.put<Author>(`${this.baseAuthorsUrl}/${authorEmail}/books/`, newBook);
+  }
+  deleteBookByAuthorEmail( newBook: Book): Observable<Author> {
+    return this.http.delete<Author>(`${this.baseAuthorsUrl}/${this.authorEmail}/books/${newBook.id}/`);
+  }
 
 }

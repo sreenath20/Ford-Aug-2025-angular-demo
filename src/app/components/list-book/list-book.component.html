@@ -1,17 +1,26 @@
 <div>
-<h3> All available Books: </h3>
-<!-- {{books | json}} -->
+    <h3> All available Books: </h3>
+    <!-- {{books | json}} -->
+    <div>
+        <div *ngIf="successMsg" class="alert alert-success">{{successMsg}}</div>
+        <div *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>ISBN</th>
+            <th>Edit</th>
+            <th>Delete</th>
 
-<table class="table">
-    <thead>        
-        <th>Name</th>
-        <th>ISBN</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of books">
-            <td>{{book.title}}</td>
-            <td>{{book.isbn}}</td>
-        </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{book.title}}</td>
+                <td>{{book.isbn}}</td>
+                <td><button (click)='updateBookById(book.id)'>Update</button> </td>
+                <td><button (click)='deleteBookById(book)' class="btn btn-danger">Delete</button></td>
+
+            </tr>
+        </tbody>
+    </table>
 </div>
