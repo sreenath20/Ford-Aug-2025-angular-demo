@@ -42,8 +42,8 @@ authorEmail: string='author01@gmail.com';
   editBookByAuthorEmail(authorEmail: string, newBook: Book): Observable<Author> {
     return this.http.put<Author>(`${this.baseAuthorsUrl}/${authorEmail}/books/`, newBook);
   }
-  deleteBookByAuthorEmail( newBook: Book): Observable<Author> {
-    return this.http.delete<Author>(`${this.baseAuthorsUrl}/${this.authorEmail}/books/${newBook.id}/`);
+  deleteBookByAuthorEmail( deleteBook: Book): Observable<Author> {
+    return this.http.delete<Author>(`${this.baseAuthorsUrl}/${this.authorEmail}/books/${deleteBook.id}`);
   }
 
 }

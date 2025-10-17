@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './list-book.component.css'
 })
 export class ListBookComponent implements OnInit {
+
   successMsg: string = '';
   errorMsg: string = '';
 
@@ -42,19 +43,21 @@ export class ListBookComponent implements OnInit {
     this.router.navigate(['books/edit', bookId]);
   }
   deleteBookById(book: Book) {
-   
+
     this.bookService.deleteBookByAuthorEmail(book).subscribe(
       {
-          next: data => {
-            console.log(data);
-            this.successMsg = "Book Deleted !";
-            this.errorMsg = ''; // disable error message
-          },
-          error: err => {
-            console.log(err);
-            this.successMsg = ''; // disable success message
-            this.errorMsg = `Book could not be deleted ! : ${err.error}`;
-          }
+        next: data => {
+          console.log(data);
+          this.successMsg = "Book Deleted !";
+          this.errorMsg = ''; // disable error message
+          // reload / refresh data
+          this.loadBooks();
+        },
+        error: err => {
+          console.log(err);
+          this.successMsg = ''; // disable success message
+          this.errorMsg = `Book could not be deleted ! : ${err.error.text}`;
+        }
       }
     )
   }
