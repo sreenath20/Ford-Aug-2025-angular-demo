@@ -9,17 +9,30 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list-book.component.css'
 })
 export class ListBookComponent implements OnInit {
+  // 1. allocated memory
+  books: Book[] = []; // allocate memory for book type collection
+  // injects dependencies
+  // initilise some of data memebers
+  constructor(private bookService: BookService) {
 
-  books:Book[]=[]; // allocate memory for book type collection
-
-  constructor(private bookService:BookService){}
- 
-  ngOnInit(): void {
-      this.loadBooks();
   }
-  loadBooks(){
+  // executed after constructor
+  ngOnInit(): void {
+    this.loadBooks();
+  }
+  loadBooks() {
     this.bookService.getAllBooks().subscribe(
-      data=>this.books=data
+      {
+        next: data => this.books = data,
+        error: error => console.log(error),
+        complete: () => console.log("Received all data with out errors.")
+      }
+      // array function is a callback and it will 
+      // get executed when server returns sucssful resonse 
+      // i.e HTTPstatus code is b/w 200 to 299
+
+
+
     )
   }
 

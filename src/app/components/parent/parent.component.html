@@ -1,8 +1,12 @@
 <p>parent works!</p>
-Child message: {{childMessage}}
-
+City: {{cityName}}
 <!-- rendering child inside parent -->
-<app-child [city]="cityName"
- (messageEvent)="receiveMessage($event)"/>
- <!-- <app-child [(city)]="cityName"
- /> -->
+<!-- Child message: {{childMessage}} 
+
+
+
+<app-child [city]="cityName" (cityChange)="receiveMessage($event)" /> -->
+
+<hr>
+<h3> Two way binding child and parent</h3>
+<app-child [(city)]="cityName" />

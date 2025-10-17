@@ -9,15 +9,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class ChildComponent {
 
-  @Input() city!:string;
-  @Output() messageEvent= new EventEmitter<string>()
+  @Input() city!: string;
+  // angular binds city and cityChange automatically
+  @Output() cityChange = new EventEmitter<string>()
 
-   childMessage=''; 
-  sendMessage(){
-    this.messageEvent.emit(this.childMessage);
+  childMessage = '';
+  sendMessage() {
+    this.cityChange.emit(this.childMessage);
   }
-  // onCityChange(event:any){
-  //   console.log('oncityChange',event.target.value);
-  //   this.messageEvent.emit(event.target.value);
-  // }
+  onCityChange(event: any) {
+    console.log('oncityChange', event.target.value);
+    this.cityChange.emit(event.target.value);
+  }
 }

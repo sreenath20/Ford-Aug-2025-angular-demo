@@ -8,15 +8,20 @@ import { ErrorComponent } from './components/error/error.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { ParentComponent } from './components/parent/parent.component';
 import { ListBookComponent } from './components/list-book/list-book.component';
+import { BooksFormComponent } from './components/books-form/books-form.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
     {path:'about',component:AboutComponent},
     {path:'users',component:UserComponent}, // display all users
+    // dynamic routing
     {path:'user/:id',component:UserComponent}, // display user by id
     {path:'registration',component:RegistrationComponent},  
     {path:'parent',component:ParentComponent},   
-    {path:'list-books',component:ListBookComponent},    
+    {path:'books',component:ListBookComponent},    // list all books
+    // add book
+    {path:'books/new',component:BooksFormComponent},
+
     {path:'demo',component:DemoComponent},    
     
     {path:'**',redirectTo:''} // '/' root of url 

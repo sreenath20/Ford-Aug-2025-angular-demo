@@ -1,3 +1,17 @@
-<p>list-book works!</p>
+<div>
 <h3> All available Books: </h3>
-{{books | json}}
+<!-- {{books | json}} -->
+
+<table class="table">
+    <thead>        
+        <th>Name</th>
+        <th>ISBN</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.title}}</td>
+            <td>{{book.isbn}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

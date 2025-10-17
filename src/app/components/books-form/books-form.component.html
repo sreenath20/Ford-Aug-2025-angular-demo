@@ -1,0 +1,28 @@
+<p>books-form works!</p>
+<div>
+    <h3> Add book to Author:</h3>
+    <div>
+        <div *ngIf="successMsg" class="alert alert-success">{{successMsg}}</div>
+        <div *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
+        
+    </div>
+    <form #bookForm="ngForm" (ngSubmit)="onSubmit()">
+        <!-- author email can be fetched from local storage / service  -->
+        <label for="authorEmail">Author Email:</label> <br>
+        <input type="text" id="aemail" name="aemail" [(ngModel)]="authorEmail" required>
+        <br>
+        <label for="title">Book Title:</label> <br>
+        
+        <input type="text" id="title" name="title" [(ngModel)]="newBook.title" required>
+        <br>
+        <label for="isbn">Book Isbn:</label> <br>
+        
+        <input type="text" id="isbn" name="isbn" [(ngModel)]="newBook.isbn" required>
+
+        <br>
+        <button type="submit" [disabled]="bookForm.invalid">Save</button>
+
+    </form>
+    {{newBook | json}}
+    {{authorEmail}}
+</div>

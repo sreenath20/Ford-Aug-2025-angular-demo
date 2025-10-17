@@ -1,7 +1,9 @@
 <p>child works!</p>
-Name:{{city}}
-Message To Parent:
-<input [(ngModel)]="childMessage     " id="cm" name="cm">
-<button (click)="sendMessage()">Send</button>
-<!-- City Name:
-<input [value] = 'city' (input)="onCityChange($event)"> -->
+<!-- message from parent:{{city}}<br>
+Message To Parent :
+<input [(ngModel)]="childMessage" id="cm" name="cm">
+<button (click)="sendMessage()">Send</button> -->
+<hr>
+<h3> Edit City Name</h3>
+City Name:
+<input [value] = 'city' (input)="onCityChange($event)">
